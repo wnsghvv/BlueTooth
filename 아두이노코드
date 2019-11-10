@@ -1,0 +1,24 @@
+아두이노 코드 
+
+void setup(){
+  Serial.begin(9600); 
+  pinMode(12, OUTPUT);
+}
+int i;
+void loop(){
+  if(Serial.available()>0){
+    String m = Serial.readString();
+    if(m.indexOf("1")==0) digitalWrite(12, HIGH);
+    if(m.indexOf("0")==0) digitalWrite(12, LOW);
+    if(m.indexOf("2")==0)
+    {
+      for(i = 0; i < 5; i++)
+      {
+      digitalWrite(12, HIGH);
+      delay(150);
+      digitalWrite(12, LOW);
+      delay(150);
+      }
+    }
+  }
+}
